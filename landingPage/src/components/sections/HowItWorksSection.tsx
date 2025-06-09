@@ -1,33 +1,54 @@
-import { useState } from "react";
+import { useState} from "react";
 import { Info } from "lucide-react";
 import { Search, CalendarDays, Video } from "lucide-react";
+
+type Step = {
+  step: number;
+  Icon: React.ReactNode;
+  title: string;
+  description: string;
+  bgColor: string;
+  iconColor: string;
+};
 
 const steps = [
   {
     step: 1,
+    Icon: <Search size={48} />,
     title: "Busque",
     description:
       "Encontre o especialista ideal para suas necessidades através de nossa plataforma de busca inteligente. Filtre por especialidade, localização e avaliações de outros pacientes.",
-    bgColor: "bg-primary",
+    bgColor: "bg-primary-tint-5",
+    iconColor: "text-primary-shade-4",
   },
   {
     step: 2,
+    Icon: <CalendarDays size={48} />,
     title: "Agende",
     description:
       "Pague online com segurança e confirme o melhor horário em sua agenda. Nosso sistema é integrado para evitar conflitos de horário e garantir sua conveniência.",
-    bgColor: "bg-info",
+    bgColor: "bg-blue-100",
+    iconColor: "text-info",
   },
   {
     step: 3,
+    Icon: <Video size={48} />,
     title: "Conecte-se",
     description:
       "No dia e hora marcados, acesse o link da consulta em seu email ou em nosso painel do paciente. Nossa sala de vídeo é segura, criptografada e fácil de usar em qualquer dispositivo.",
-    bgColor: "bg-secondary",
+    bgColor: "bg-yellow-100",
+    iconColor: "text-action-warning",
   },
 ];
 
-function StepModal({ isOpen, onClose, step }) {
-  if (!isOpen) return null;
+interface StepModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  step: Step | null;
+}
+
+function StepModal({ isOpen, onClose, step }: StepModalProps) {
+  if (!isOpen || !step) return null;
 
   return (
     <div
@@ -83,39 +104,9 @@ function StepModal({ isOpen, onClose, step }) {
 
 export function HowItWorksSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedStep, setSelectedStep] = useState(null);
+  const [selectedStep, setSelectedStep] = useState<Step | null>(null);
 
-  const steps = [
-    {
-      step: 1,
-      Icon: <Search size={48} />,
-      title: "Busque",
-      description:
-        "Encontre o especialista ideal para suas necessidades através de nossa plataforma de busca inteligente. Filtre por especialidade, localização e avaliações de outros pacientes.",
-      bgColor: "bg-primary-tint-5",
-      iconColor: "text-primary-shade-4",
-    },
-    {
-      step: 2,
-      Icon: <CalendarDays size={48} />,
-      title: "Agende",
-      description:
-        "Pague online com segurança e confirme o melhor horário em sua agenda. Nosso sistema é integrado para evitar conflitos de horário e garantir sua conveniência.",
-      bgColor: "bg-blue-100",
-      iconColor: "text-info",
-    },
-    {
-      step: 3,
-      Icon: <Video size={48} />,
-      title: "Conecte-se",
-      description:
-        "No dia e hora marcados, acesse o link da consulta em seu email ou em nosso painel do paciente. Nossa sala de vídeo é segura, criptografada e fácil de usar em qualquer dispositivo.",
-      bgColor: "bg-yellow-100",
-      iconColor: "text-action-warning",
-    },
-  ];
-
-  const handleCardClick = (step) => {
+  const handleCardClick = (step: Step) => {
     setSelectedStep(step);
     setIsModalOpen(true);
   };
@@ -132,7 +123,7 @@ export function HowItWorksSection() {
 
   return (
     <>
-      <section className="bg-white py-20 px-8">
+      <section id="como-funciona" className="bg-white py-20 px-8">
         <div className="container mx-auto text-center">
           <h2 className="text-h2 text-secondary mb-24">Simples como 1, 2, 3</h2>
 
