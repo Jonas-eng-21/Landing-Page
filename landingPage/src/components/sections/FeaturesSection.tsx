@@ -39,14 +39,15 @@ export function FeaturesSection() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-lg text-center flex flex-col items-center shadow-lg"
+              className="
+                bg-white p-6 rounded-lg text-center flex flex-col items-center shadow-lg
+                transition-all duration-300
+                hover:animate-pulse hover:animate-twice hover:animate-ease-linear
+              "
             >
-
               <div className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-[#E8F5E9]">
-
                 <feature.Icon size={32} className="text-[#28C888]" />
               </div>
-
 
               <h3 className="text-[20px] font-semibold leading-[28px] text-[#263238] mb-3">
                 {feature.title}
