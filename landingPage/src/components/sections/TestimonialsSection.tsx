@@ -1,5 +1,3 @@
-import { Quote } from "lucide-react"; 
-
 import avatarFemale from "../../assets/images/womanShotter.jpg";
 import avatarMale from "../../assets/images/manShotter.jpg";
 
@@ -10,6 +8,7 @@ const testimonials = [
     author: "Mariana S.",
     location: "São Paulo/SP",
     avatar: avatarFemale,
+    bgColor: "bg-[#28C888]",
   },
   {
     quote:
@@ -17,48 +16,61 @@ const testimonials = [
     author: "João P.",
     location: "Recife/PE",
     avatar: avatarMale,
+    bgColor: "bg-[#2194F3]",
   },
 ];
 
 export function TestimonialsSection() {
   return (
-    <section id="depoimentos" className="bg-neutral-silver py-20 px-8">
+    <section id="depoimentos" className="bg-[#F5F7FA] py-20 px-8">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-h2 text-secondary">
-            O que nossos pacientes dizem
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-white p-8 rounded-xl shadow-lg flex flex-col"
-            >
-              <div className="flex-grow">
-                <Quote className="text-primary-tint-3" size={40} />
-                <p className="text-p2-regular text-neutral-grey italic mt-4">
-                  "{testimonial.quote}"
-                </p>
-              </div>
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+          <div className="text-center lg:text-left">
+            <h2 className="text-[36px] font-semibold leading-[44px] text-[#263238]">
+              O que nossos pacientes <br className="hidden lg:block" />
+              <span className="text-[#28C888]">têm a dizer</span>
+            </h2>
+            <p className="text-[16px] font-normal leading-[24px] text-[#717171] mt-4 max-w-md mx-auto lg:mx-0">
+              A confiança e a satisfação de quem usa nossa plataforma é o nosso
+              maior indicador de sucesso. Veja algumas experiências reais.
+            </p>
+          </div>
 
-              <div className="flex items-center mt-6 pt-6 border-t border-neutral-silver">
-                <img
-                  src={testimonial.avatar}
-                  alt={`Foto de ${testimonial.author}`}
-                  className="w-14 h-14 rounded-full object-cover mr-4"
-                />
-                <div>
-                  <p className="text-p2-medium text-secondary">
-                    {testimonial.author}
+          <div className="group flex flex-col items-center gap-6">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className={`
+                  ${testimonial.bgColor} text-white
+                  p-6 rounded-lg shadow-lg w-full max-w-md
+                  cursor-pointer transition-all duration-300 ease-in-out
+                  hover:scale-105 hover:shadow-2xl hover:!blur-none
+                  group-hover:not-hover:scale-95 group-hover:not-hover:blur-sm
+                `}
+              >
+                <div className="flex flex-col h-full">
+                  <p className="flex-grow font-normal text-base italic opacity-90">
+                    "{testimonial.quote}"
                   </p>
-                  <p className="text-p4-regular text-neutral-l-grey">
-                    {testimonial.location}
-                  </p>
+                  <div className="flex items-center mt-4 pt-4 border-t border-white/20">
+                    <img
+                      src={testimonial.avatar}
+                      alt={`Foto de ${testimonial.author}`}
+                      className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-white/50"
+                    />
+                    <div>
+                      <p className="font-semibold text-base">
+                        {testimonial.author}
+                      </p>
+                      <p className="font-normal text-sm opacity-80">
+                        {testimonial.location}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

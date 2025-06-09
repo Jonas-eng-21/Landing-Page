@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Search, CalendarDays, Video } from "lucide-react";
-import { StepModal } from "../StepModal";
+import { StepModal } from "../ui/StepModal";
 
 type Step = {
   step: number;
@@ -64,7 +64,6 @@ export function HowItWorksSection() {
     <>
       <section id="como-funciona" className="bg-[#F5F7FA] py-20 px-8">
         <div className="container mx-auto grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          {/* INÍCIO DA SEÇÃO DE TEXTO MODIFICADA */}
           <div className="text-center lg:text-left">
             <h2 className="text-[36px] font-semibold leading-[44px] text-[#263238]">
               Simples, Rápido e <br className="hidden lg:block" />
@@ -76,7 +75,6 @@ export function HowItWorksSection() {
               cliques. Siga os passos e veja como é fácil.
             </p>
           </div>
-          {/* FIM DA SEÇÃO DE TEXTO MODIFICADA */}
 
           <div className="group relative mx-auto grid h-[300px] w-[250px] place-items-center">
             {steps.map((step, index) => (

@@ -1,21 +1,23 @@
+import { TransactionCard } from "../ui/TransactionCard";
+
 export function CTASection() {
   return (
-    <section className="bg-primary">
-      <div className="container mx-auto py-20 px-8 text-center">
-        <h2 className="text-h2 text-white max-w-3xl mx-auto">
-          Pronto para revolucionar o cuidado com a sua saúde?
-        </h2>
-
-        <button
-          className="
-            mt-8 bg-white text-primary font-semibold 
-            text-p1-medium py-3 px-10 rounded-lg 
-            shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1
-            transition-all duration-300
-          "
-        >
-          Agende sua Primeira Consulta Hoje
-        </button>
+    <section className="bg-[#F5F7FA] py-20 px-8">
+      <div className="container mx-auto flex flex-col items-center text-center">
+        <div className="max-w-2xl mb-12">
+          <h2 className="text-[36px] font-semibold leading-[44px] text-[#263238]">
+            Pronto para cuidar da sua <br />
+            <span className="text-[#28C888]">saúde de verdade?</span>
+          </h2>
+          <p className="text-[16px] font-normal leading-[24px] text-[#717171] mt-4">
+            Agendar sua primeira consulta é o primeiro passo para uma vida mais
+            saudável. Nosso processo de agendamento e pagamento é simples,
+            rápido e totalmente seguro.
+          </p>
+        </div>
+        <div>
+          <TransactionCard />
+        </div>
       </div>
     </section>
   );
